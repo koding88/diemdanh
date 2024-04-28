@@ -1,0 +1,20 @@
+on:
+  push:
+    branches: [ "main" ] 
+
+jobs:
+  build-node: 
+    runs-on: ubuntu-latest
+    container: node:20
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      PORT: ${{ secrets.PORT }}
+      USERNAME: ${{ secrets.USERNAME }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: node app
