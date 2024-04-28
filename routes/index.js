@@ -11,8 +11,8 @@ require('dotenv').config();
 const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
 
 let info = {
-  username: 'anhdngch210349+',
-  password: '123abc',
+  username: process.env.USERNAME,
+  password: process.env.PASSWORD,
   campus: '3'
 };
 
