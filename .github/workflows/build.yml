@@ -26,5 +26,5 @@ jobs:
           folder: dist
 
       - name: Deploy 🚀🚀🚀
-      run: |
+        run: |
           npm run deploy
