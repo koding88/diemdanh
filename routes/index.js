@@ -8,7 +8,7 @@ const { validateInput } = require('../untils/validate');
 const { Telegraf } = require('telegraf');
 require('dotenv').config();
 
-const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
+// const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
 
 let info = {
   username: process.env.USERNAME,
@@ -16,31 +16,31 @@ let info = {
   campus: '3'
 };
 
-bot.command('updatefull', async (ctx) => {
-  const [newUsername, newPassword, newCampus] = ctx.message.text.split(' ').slice(1);
+// bot.command('updatefull', async (ctx) => {
+//   const [newUsername, newPassword, newCampus] = ctx.message.text.split(' ').slice(1);
 
-  try {
-    const updatedInfo = validateInput({ username: newUsername, password: newPassword, campus: newCampus });
-    info = updatedInfo;
-    ctx.reply('Info updated successfully!');
-  } catch (error) {
-    ctx.reply(error.message);
-  }
-});
+//   try {
+//     const updatedInfo = validateInput({ username: newUsername, password: newPassword, campus: newCampus });
+//     info = updatedInfo;
+//     ctx.reply('Info updated successfully!');
+//   } catch (error) {
+//     ctx.reply(error.message);
+//   }
+// });
 
-bot.command('update', async (ctx) => {
-  const newUsername = ctx.message.text.split(' ')[1];
+// bot.command('update', async (ctx) => {
+//   const newUsername = ctx.message.text.split(' ')[1];
 
-  try {
-    const updatedInfo = validateInput({ username: newUsername, password: info.password, campus: info.campus });
-    info = updatedInfo;
-    ctx.reply('Username updated successfully!');
-  } catch (error) {
-    ctx.reply(error.message);
-  }
-});
+//   try {
+//     const updatedInfo = validateInput({ username: newUsername, password: info.password, campus: info.campus });
+//     info = updatedInfo;
+//     ctx.reply('Username updated successfully!');
+//   } catch (error) {
+//     ctx.reply(error.message);
+//   }
+// });
 
-bot.launch();
+// bot.launch();
 
 router.get('/', async function (req, res, next) {
   try {
