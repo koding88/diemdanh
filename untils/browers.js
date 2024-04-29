@@ -12,9 +12,9 @@ const puppeteer = require('puppeteer');
 // Define an asynchronous function to automate browser actions
 const browser = async (obj) => {
     // Launch a new browser instance
-    const browser = await puppeteer.launch();
+    const browserInstance = await puppeteer.launch();
     // Create a new page within the browser
-    const page = await browser.newPage();
+    const page = await browserInstance.newPage();
 
     // Navigate to the login page
     await page.goto('https://ap.greenwich.edu.vn/Phuhuynh/Login.aspx');
@@ -34,7 +34,8 @@ const browser = async (obj) => {
 
     // Fill in the login information
     console.log("Filling in login information...");
-    await page.type('#ctl00_mainContent_txtUser', obj.username);
+    const username = obj.username.replace('@fpt.edu.vn', '+');
+    await page.type('#ctl00_mainContent_txtUser', username);
     await page.type('#ctl00_mainContent_txtPass', obj.password);
 
     // Get the typed username and password values
@@ -67,7 +68,7 @@ const browser = async (obj) => {
     }
 
     // Return an object containing the RequestVerificationToken and ASPNET_SessionId
-    return { RequestVerificationToken, ASPNET_SessionId };
+    return { RequestVerificationToken, ASPNET_SessionId, browserInstance };
 }
 
 // Export the browser function for use in other modules
