@@ -3,13 +3,11 @@ const VALID_CAMPUSES = ['3', '4', '5', '6'];
 function validateInput(input) {
     let { username, password, campus } = input;
 
-    // Xử lý username
-    username = username.replace('@fpt.edu.vn', '+'); // Thay thế @fpt.edu.vn thành +
+    username = username.replace('@fpt.edu.vn', '+');
     if (!username.includes('+')) {
-        username += '+'; // Nếu không có dấu +, thêm vào cuối
+        username += '+'; 
     }
 
-    // Xử lý campus
     if (!VALID_CAMPUSES.includes(campus)) {
         const validCampuses = VALID_CAMPUSES.map(c => {
             switch (c) {
