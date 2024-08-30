@@ -18,14 +18,14 @@ else
     exit 1
 fi
 
-# Cài đặt Google Chrome
+# Cài đặt Google Chrome mà không sử dụng sudo
 echo "Đang cài đặt Google Chrome ..."
-sudo dpkg -i $CHROME_DEB
+dpkg -i $CHROME_DEB
 
 # Cài đặt các phụ thuộc còn thiếu nếu có lỗi xảy ra trong quá trình cài đặt
 if [ $? -ne 0 ]; then
     echo "Đang sửa chữa các phụ thuộc ..."
-    sudo apt-get install -f -y
+    apt-get install -f -y
 fi
 
 # Xóa file .deb sau khi cài đặt thành công
@@ -33,3 +33,5 @@ echo "Đang xóa file cài đặt ..."
 rm -f $CHROME_DEB
 
 echo "Cài đặt Google Chrome hoàn tất!"
+
+npx puppeteer browsers install chrome
