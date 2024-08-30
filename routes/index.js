@@ -57,6 +57,7 @@ router.get('/', async function (req, res, next) {
       const schedule = getScheduleInfo(data2);
 
       res.render('index', { student, schedule });
+      // res.json({ student, schedule });
 
       setTimeout(async () => {
         await closeBrowser(browserInstance);
