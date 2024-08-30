@@ -12,7 +12,9 @@ const puppeteer = require('puppeteer');
 // Define an asynchronous function to automate browser actions
 const browser = async (obj) => {
     // Launch a new browser instance
-    const browserInstance = await puppeteer.launch();
+    const browserInstance = await puppeteer.launch({
+        headless: true,
+    });
     // Create a new page within the browser
     const page = await browserInstance.newPage();
 
